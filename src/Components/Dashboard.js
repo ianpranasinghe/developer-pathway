@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     urlRequest
       .getData("https://nc-student-tracker.herokuapp.com/api/students")
       .then(data => {
@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     if (prevState.filter !== this.state.filter) {
       urlRequest
         .getData(
@@ -36,8 +36,7 @@ class Dashboard extends React.Component {
           this.setState(currentState => {
             const newState = {
               ...currentState,
-              students: data.students,
-              filter: ""
+              students: data.students
             };
             return newState;
           });
@@ -47,7 +46,9 @@ class Dashboard extends React.Component {
 
   filterState = event => {
     const { id } = event.target;
-    this.setState({ filter: id, students: [] });
+    if (id !== this.state.filter) {
+      this.setState({ filter: id, students: [] });
+    }
   };
 
   render() {
@@ -59,13 +60,15 @@ class Dashboard extends React.Component {
           <Blocks filterState={this.filterState} />
           <div id="toggle">
             <Link to="/students">
-              <button>All</button>
+              <button onClick={this.filterState} id="">
+                All Students
+              </button>
             </Link>
           </div>
 
           <Router>
-            <FilteredStudent path="/:slug/*" students={students} />
-            <Students path="/students/*" students={students} />
+            <Students path="/*" students={students} />
+            <FilteredStudent path="/blocks/:slug/*" students={students} />
           </Router>
         </>
       );

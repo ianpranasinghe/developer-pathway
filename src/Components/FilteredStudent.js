@@ -8,14 +8,15 @@ class FilteredStudent extends React.Component {
   };
 
   render() {
-    console.log(this.state, "This inside students");
+    console.log("in filtered list");
     if (this.state.students.length > 0) {
       const { students } = this.state;
+      const { slug } = this.props;
 
       return (
         <div className="Students" id="studentsBlock">
           <Router>
-            <Student path="students/:id" />
+            <Student path="/:id" />
           </Router>
           <ul>
             {students.map(student => {
@@ -23,7 +24,10 @@ class FilteredStudent extends React.Component {
               return (
                 <>
                   <div class="studentCard" key={_id}>
-                    <Link to={`students/${_id}`} id="studentCardName">
+                    <Link
+                      to={`/students/blocks/${slug}/${_id}`}
+                      id="studentCardName"
+                    >
                       {name}{" "}
                     </Link>
                     <div id="studentCardCurrentBlock">

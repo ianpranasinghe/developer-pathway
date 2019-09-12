@@ -8,10 +8,10 @@ function Navigation() {
         src="https://northcoders.com/images/logos/learn_to_code_manchester_original_second.png"
         alt="NorthCoders"
       ></img>
-      <div class="navItem">
-        <Link to="/students">Dashboard</Link>
+      <div className="navItem">
+        <Link to="/">Student Dashboard</Link>
       </div>
-      <div class="navItem">
+      <div className="navItem">
         <Link to="/course">Course Statistics</Link>
       </div>
     </div>

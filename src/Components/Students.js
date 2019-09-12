@@ -12,11 +12,13 @@ class Students extends React.Component {
   }
 
   render() {
+
     if (this.state.students.length > 0) {
-      const { students } = this.state;
+      console.log("in unfiltered students file")
+      const { students } = this.state;      
       return (
         <div className="Students" id="studentsBlock">
-          <Router>
+          <Router>        
             <Student path=":id" />
           </Router>
           <ul>
@@ -25,7 +27,7 @@ class Students extends React.Component {
               return (
                 <>
                   <div class="studentCard" key={_id}>
-                    <Link to={`${_id}`} id="studentCardName">
+                    <Link to={`/students/${_id}`} id="studentCardName">
                       {name}{" "}
                     </Link>
                     <div id="studentCardCurrentBlock">

@@ -7,12 +7,12 @@ class Student extends Component {
   };
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     this.getStudent();
   }
 
   componentDidUpdate(prevProps) {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     if (prevProps !== this.props) {
       this.getStudent();
     }
@@ -31,6 +31,7 @@ class Student extends Component {
   };
 
   render() {
+    console.log("in student file")
     const { student } = this.state;
     if (Object.keys(student).length > 0) {
       const newArr = student.blockHistory.reduce((newArray, block) => {
@@ -47,6 +48,7 @@ class Student extends Component {
       }, []);
       return (
         <div id="student">
+          <p>Close</p>
           <h1 id="name">{student.name}</h1>
           <p>Student ID: {student._id}</p>
           <p>Starting cohort: {student.startingCohort}</p>
@@ -57,7 +59,9 @@ class Student extends Component {
                 <h3>{name}</h3>
                 <ul className="blocksList">
                   <li key={_id}>Block ID: {_id}</li>
-                  <li key={numOfAttempts}>Number of attempts: {numOfAttempts}</li>
+                  <li key={numOfAttempts}>
+                    Number of attempts: {numOfAttempts}
+                  </li>
                 </ul>
               </div>
             );

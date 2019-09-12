@@ -5,7 +5,7 @@ class Blocks extends Component {
   render() {
     return (
       <div id="blocks">
-        <Link to="fun">
+        <Link to="blocks/fun">
           <button
             onClick={this.props.filterState}
             class="blockCard"
@@ -16,7 +16,7 @@ class Blocks extends Component {
           </button>
         </Link>
 
-        <Link to="be">
+        <Link to="blocks/be">
           <button
             onClick={this.props.filterState}
             class="blockCard"
@@ -27,7 +27,7 @@ class Blocks extends Component {
           </button>
         </Link>
 
-        <Link to="fe">
+        <Link to="blocks/fe">
           <button
             onClick={this.props.filterState}
             class="blockCard"
@@ -37,7 +37,7 @@ class Blocks extends Component {
             Front End
           </button>
         </Link>
-        <Link to="proj">
+        <Link to="blocks/proj">
           <button
             onClick={this.props.filterState}
             class="blockCard"
@@ -47,7 +47,7 @@ class Blocks extends Component {
             Projects
           </button>
         </Link>
-        <Link to="grad">
+        <Link to="blocks/grad">
           <button
             onClick={this.props.filterState}
             class="blockCard"
