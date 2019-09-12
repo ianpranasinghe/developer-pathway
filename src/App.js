@@ -1,17 +1,14 @@
 import React from "react";
 import "./App.css";
-import { Router } from "@reach/router";
-import Dashboard from "./Components/Dashboard.js";
-import CourseStats from "./Components/Course";
-import Navigation from "./Components/Navigation";
+import { Router, Redirect } from "@reach/router";
+import Pages from "./Components/Pages.js";
 
 function App() {
   return (
     <div className="App" id="App">
-      <Navigation />
-      <Router id="dashboardContent">
-        <Dashboard path="/dashboard/students/*" />
-        <CourseStats path="/course" />
+      <Router id="mainDashboard">
+        <Redirect from="/" to="/students" />
+        <Pages path="/students" />
       </Router>
     </div>
   );

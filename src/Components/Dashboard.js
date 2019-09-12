@@ -2,7 +2,7 @@ import React from "react";
 import Students from "./Students";
 import FilteredStudent from "./FilteredStudent";
 import Blocks from "./Blocks";
-import { Router } from "@reach/router";
+import { Link, Router } from "@reach/router";
 import * as urlRequest from "./urlRequest";
 
 class Dashboard extends React.Component {
@@ -55,6 +55,12 @@ class Dashboard extends React.Component {
         <>
           <h2 id="dashboardHeader">Dashboard</h2>
           <Blocks filterState={this.filterState} />
+          <div id="toggle">
+            <Link to="/">
+              <button>All</button>
+            </Link>
+          </div>
+
           <Router>
             <FilteredStudent path="/:slug" students={students} />
             <Students path="/" students={students} />
