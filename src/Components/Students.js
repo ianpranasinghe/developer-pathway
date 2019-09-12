@@ -9,10 +9,8 @@ class Students extends React.Component {
   };
 
   render() {
-    console.log(this.state, "This inside students");
     if (this.state.students.length > 0) {
       const { students } = this.state;
-
       return (
         <div className="Students" id="studentsBlock">
           <Router>
