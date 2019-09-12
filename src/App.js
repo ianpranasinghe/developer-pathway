@@ -10,7 +10,7 @@ function App() {
     <div className="App" id="App">
       <Navigation />
       <Router id="dashboardContent">
-        <Dashboard path="/*" />
+        <Dashboard path="/dashboard/students/*" />
         <CourseStats path="/course" />
       </Router>
     </div>

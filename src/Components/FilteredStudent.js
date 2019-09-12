@@ -1,9 +1,8 @@
 import React from "react";
 import { Link, Router } from "@reach/router";
-
 import Student from "./Student";
 
-class Students extends React.Component {
+class FilteredStudent extends React.Component {
   state = {
     students: this.props.students
   };
@@ -51,4 +50,4 @@ class Students extends React.Component {
   }
 }
 
-export default Students;
+export default FilteredStudent;

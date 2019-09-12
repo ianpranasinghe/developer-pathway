@@ -1,6 +1,6 @@
 #navBar {
   height: 100vh;
-  width: 18vw;
+  width: 12vw;
   padding: 3%;
   text-align: center;
   background-color: silver;
@@ -8,7 +8,7 @@
 }
 
 #navBar img {
-  width: 85%;
+  width: 100%;
   margin: 8% auto;
 }
 
@@ -20,8 +20,9 @@
 }
 
 #dashboardContent {
-  width: 76vw;
+  width: 71vw;
   float: right;
+  margin: 2%;
 }
 
 /******Students block******/
@@ -43,4 +44,33 @@
 }
 
 #studentCardName {
+}
+
+/******Students block******/
+#student {
+  height: 100vh;
+  width: 18vw;
+  padding: 3%;
+  text-align: center;
+  background-color: silver;
+  float: right;
+}
+
+/******Dashboard HEader******/
+#dashboardHeader {
+  width: 100%;
+  margin: 0;
+  float: left;
+}
+
+/******Blocks******/
+#blocks {
+}
+
+.blockCard {
+  display: inline-block;
+  width: 11vw;
+  height: 22vh;
+  margin: 4%;
+  border: 1px solid grey;
 }
