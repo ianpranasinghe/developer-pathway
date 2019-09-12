@@ -1,15 +1,20 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { Link, Router } from "@reach/router";
+import { Router } from "@reach/router";
+import Home from "./Components/Home.js";
+import Students from "./Components/Students.js";
+import CourseStats from "./Components/Course";
+import Navigation from "./Components/Navigation";
 
 function App() {
   return (
     <div className="App">
       <Navigation />
-      {/**HOME**/}
-      {/*Students nested router*/}
-      {/*Course Stats*/}
+      <Router>
+        <Home path="/" />
+        <Students path="/students" />
+        <CourseStats path="/course" />
+      </Router>
     </div>
   );
 }
