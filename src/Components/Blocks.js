@@ -47,6 +47,16 @@ class Blocks extends Component {
             Projects
           </button>
         </Link>
+        <Link to="grad">
+          <button
+            onClick={this.props.filterState}
+            class="blockCard"
+            key="grad"
+            id="grad"
+          >
+            Graduates
+          </button>
+        </Link>
       </div>
     );
   }

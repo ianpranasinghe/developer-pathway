@@ -9,7 +9,7 @@ function Navigation() {
         alt="NorthCoders"
       ></img>
       <div class="navItem">
-        <Link to="/">Dashboard</Link>
+        <Link to="/students">Dashboard</Link>
       </div>
       <div class="navItem">
         <Link to="/course">Course Statistics</Link>

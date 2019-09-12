@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Router } from "@reach/router";
-
 import Student from "./Student";
 
 class Students extends React.Component {
@@ -8,13 +7,17 @@ class Students extends React.Component {
     students: this.props.students
   };
 
+  componentDidMount(){
+    window.scrollTo(0, 0)
+  }
+
   render() {
     if (this.state.students.length > 0) {
       const { students } = this.state;
       return (
         <div className="Students" id="studentsBlock">
           <Router>
-            <Student path="students/:id" />
+            <Student path=":id" />
           </Router>
           <ul>
             {students.map(student => {
@@ -22,7 +25,7 @@ class Students extends React.Component {
               return (
                 <>
                   <div class="studentCard" key={_id}>
-                    <Link to={`students/${_id}`} id="studentCardName">
+                    <Link to={`${_id}`} id="studentCardName">
                       {name}{" "}
                     </Link>
                     <div id="studentCardCurrentBlock">

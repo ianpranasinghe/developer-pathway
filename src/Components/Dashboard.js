@@ -12,6 +12,7 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0)
     urlRequest
       .getData("https://nc-student-tracker.herokuapp.com/api/students")
       .then(data => {
@@ -23,6 +24,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    window.scrollTo(0, 0)
     if (prevState.filter !== this.state.filter) {
       urlRequest
         .getData(
@@ -56,14 +58,14 @@ class Dashboard extends React.Component {
           <h2 id="dashboardHeader">Dashboard</h2>
           <Blocks filterState={this.filterState} />
           <div id="toggle">
-            <Link to="/">
+            <Link to="/students">
               <button>All</button>
             </Link>
           </div>
 
           <Router>
-            <FilteredStudent path="/:slug" students={students} />
-            <Students path="/" students={students} />
+            <FilteredStudent path="/:slug/*" students={students} />
+            <Students path="/students/*" students={students} />
           </Router>
         </>
       );

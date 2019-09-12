@@ -7,10 +7,12 @@ class Student extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0)
     this.getStudent();
   }
 
   componentDidUpdate(prevProps) {
+    window.scrollTo(0, 0)
     if (prevProps !== this.props) {
       this.getStudent();
     }
