@@ -30,26 +30,36 @@ class Student extends Component {
 
   render() {
     const { student } = this.state;
-
     if (Object.keys(student).length > 0) {
       const newArr = student.blockHistory.reduce((newArray, block) => {
         if (
           newArray.filter(newBlock => newBlock.name === block.name).length > 0
         ) {
-          return newArray.find(newBlock => newBlock.name === block.name)[
-            "count"
-          ]++;
+          newArray.find(newBlock => newBlock.name === block.name)
+            .numOfAttempts++;
         } else {
-          return (block["count"] = 1);
+          block["numOfAttempts"] = 1;
+          newArray.push(block);
         }
+        return newArray;
       }, []);
-      console.log(newArr);
       return (
         <div id="student">
           <h1 id="name">{student.name}</h1>
-          <p>{student.id}</p>
-          <p>{student.startingCohort}</p>
-          {}
+          <p>Student ID: {student._id}</p>
+          <p>Starting cohort: {student.startingCohort}</p>
+          {newArr.map(block => {
+            const { numOfAttempts, _id, name } = block;
+            return (
+              <div className="blocks">
+                <h3>{name}</h3>
+                <ul className="blocksList">
+                  <li key={_id}>Block ID: {_id}</li>
+                  <li key={numOfAttempts}>Number of attempts: {numOfAttempts}</li>
+                </ul>
+              </div>
+            );
+          })}
         </div>
       );
     } else {
