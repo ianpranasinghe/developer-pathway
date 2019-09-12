@@ -3,14 +3,17 @@ import { Link } from "@reach/router";
 
 function Navigation() {
   return (
-    <div className="Navigation">
-      <nav>
-        <Link to="/">Home</Link>
-        <br></br>
-        <Link to="/students">Students</Link>
-        <br></br>
+    <div className="Navigation" id="navBar">
+      <img
+        src="https://northcoders.com/images/logos/learn_to_code_manchester_original_second.png"
+        alt="NorthCoders"
+      ></img>
+      <div class="navItem">
+        <Link to="/">Dashboard</Link>
+      </div>
+      <div class="navItem">
         <Link to="/course">Course Statistics</Link>
-      </nav>
+      </div>
     </div>
   );
 }

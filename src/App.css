@@ -1,33 +1,46 @@
-.App {
+#navBar {
+  height: 100vh;
+  width: 18vw;
+  padding: 3%;
+  text-align: center;
+  background-color: silver;
+  float: left;
+}
+
+#navBar img {
+  width: 85%;
+  margin: 8% auto;
+}
+
+.navItem {
+  display: inline-block;
+  width: 100%;
+  margin-top: 5%;
+  color: #fff;
+}
+
+#dashboardContent {
+  width: 76vw;
+  float: right;
+}
+
+/******Students block******/
+#studentsBlock {
+  width: auto;
+}
+
+#studentsBlock ul {
+  list-style: none;
+}
+
+.studentCard {
+  border: 1px solid black;
+  margin: 2%;
+  width: 16vw;
+  height: 20vh;
+  display: inline-block;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#studentCardName {
 }

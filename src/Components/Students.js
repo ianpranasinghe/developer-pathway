@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "@reach/router";
+import { Link, Router } from "@reach/router";
 import * as urlRequest from "./urlRequest";
+import Student from "./Student";
 
 class Students extends React.Component {
   state = {
@@ -21,28 +22,33 @@ class Students extends React.Component {
   render() {
     if (this.state.students.length > 0) {
       const { students } = this.state;
+
       return (
-        <div className="Students">
-          <ol>
+        <div className="Students" id="studentsBlock">
+          <Router>
+            <Student path="students/:id" />
+          </Router>
+          <ul>
             {students.map(student => {
               const { name, _id, startingCohort, currentBlock } = student;
               return (
                 <>
-                  <li key={_id}>
-                    <Link to={`/${_id}`}>{name} </Link>
-                  </li>
-                  <ul>
-                    <li>
-                      <u>Current block:</u> {currentBlock.toUpperCase()}
-                    </li>
-                    <li>
-                      <u>Starting cohort:</u> {startingCohort}
-                    </li>
-                  </ul>
+                  <div class="studentCard" key={_id}>
+                    <Link to={`students/${_id}`} id="studentCardName">
+                      {name}{" "}
+                    </Link>
+                    <div id="studentCardCurrentBlock">
+                      {" "}
+                      Current block: {currentBlock.toUpperCase()}
+                    </div>
+                    <div id="studentCardStartingCohort">
+                      Starting cohort: {startingCohort}
+                    </div>
+                  </div>
                 </>
               );
             })}
-          </ol>
+          </ul>
         </div>
       );
     } else {

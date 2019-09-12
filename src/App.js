@@ -1,18 +1,16 @@
 import React from "react";
 import "./App.css";
 import { Router } from "@reach/router";
-import Home from "./Components/Home.js";
-import Students from "./Components/Students.js";
+import Dashboard from "./Components/Dashboard.js";
 import CourseStats from "./Components/Course";
 import Navigation from "./Components/Navigation";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="App">
       <Navigation />
-      <Router>
-        <Home path="/" />
-        <Students path="/students" />
+      <Router id="dashboardContent">
+        <Dashboard path="/*" />
         <CourseStats path="/course" />
       </Router>
     </div>
