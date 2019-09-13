@@ -65,7 +65,7 @@ class Blocks extends Component {
   render() {
     return (
       <div id="blocks">
-        <Link className="blockList" to="../../blocks/fun">
+        <Link className="blockList" to="/students/blocks/fun">
           <button
             onClick={this.props.filterState}
             className="blockCard"
@@ -83,7 +83,7 @@ class Blocks extends Component {
           </button>
         </Link>
 
-        <Link className="blockList" to="../../blocks/be">
+        <Link className="blockList" to="/students/blocks/be">
           <button
             className="blockCard"
             key="be"
@@ -101,7 +101,7 @@ class Blocks extends Component {
           </button>
         </Link>
 
-        <Link className="blockList" to="../../blocks/fe">
+        <Link className="blockList" to="/students/blocks/fe">
           <button
             onClick={this.props.filterState}
             className="blockCard"
@@ -118,7 +118,7 @@ class Blocks extends Component {
             <h4 name="fe">Front End</h4>
           </button>
         </Link>
-        <Link className="blockList" to="../../blocks/proj">
+        <Link className="blockList" to="/students/blocks/proj">
           <button
             onClick={this.props.filterState}
             className="blockCard"
@@ -135,7 +135,7 @@ class Blocks extends Component {
             <h4 name="proj">Projects</h4>
           </button>
         </Link>
-        <Link className="blockList" to="../../blocks/grad">
+        <Link className="blockList" to="/students/blocks/grad">
           <button
             onClick={this.props.filterState}
             className="blockCard"
@@ -152,7 +152,7 @@ class Blocks extends Component {
             <h4 name="grad"> Graduates</h4>
           </button>
         </Link>
-        <Link className="blockList" to="../../">
+        <Link className="blockList" to="/students">
           <button
             onClick={this.props.filterState}
             className="blockCard"
