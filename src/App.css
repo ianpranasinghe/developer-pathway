@@ -3,47 +3,94 @@
   width: 12vw;
   padding: 3%;
   text-align: center;
-  background-color: silver;
+  position: fixed;
+  background-color: #1f2829;
   float: left;
 }
 
 #navBar img {
-  width: 100%;
-  margin: 8% auto;
+  width: 75%;
+  margin: 20% auto;
 }
 
-.navItem {
+.navItem a {
   display: inline-block;
   width: 100%;
-  margin-top: 5%;
+  margin-top: 15%;
   color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
 }
-
+/******Dashboard******/
 #dashboardContent {
-  width: 71vw;
+  width: 78vw;
   float: right;
   margin: 2%;
+}
+
+#dashboardHeader {
+  width: 89%;
+  margin: 1% 4%;
+  float: left;
 }
 
 /******Students block******/
 #studentsBlock {
   width: auto;
+  text-align: center;
 }
 
 #studentsBlock ul {
   list-style: none;
+  padding: 0;
 }
 
-.studentCard {
-  border: 1px solid black;
+#studentsBlock h3 {
+  width: 89%;
+  margin: 1% 4%;
+  float: left;
+  text-align: left;
+}
+
+.studentCardContainer {
+  padding: 2%;
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #fff;
   margin: 2%;
-  width: 16vw;
-  height: 20vh;
+  width: 220px;
+  height: 70px;
   display: inline-block;
-  text-align: center;
+  -webkit-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 0.43);
+  -moz-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 0.43);
+  box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 0.43);
+  transition-duration: 0.3s;
 }
 
-#studentCardName {
+.studentCardContainer {
+}
+
+.studentCardContainer:hover {
+  -webkit-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 1);
+  -moz-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 1);
+  box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 1);
+}
+
+.studentCardContainer img {
+  width: 25%;
+  height: auto;
+  float: left;
+  margin: 8% 4% 0% 1%;
+}
+
+#studentCardContainerName {
+  width: auto;
+  margin-top: 9%;
+  margin-left: 2.5%;
+  display: inline-block;
+  font-size: 1vw;
 }
 
 /******Students block******/
@@ -56,21 +103,73 @@
   float: right;
 }
 
-/******Dashboard HEader******/
-#dashboardHeader {
-  width: 100%;
-  margin: 0;
-  float: left;
+/******Blocks******/
+
+#blocks {
+  text-align: center;
+}
+.blockList {
+  margin: 1% 2%;
+  width: 135px;
+  height: 130px;
+  display: inline-block;
+  -webkit-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 0.43);
+  -moz-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 0.43);
+  box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 0.43);
+  transition-duration: 0.3s;
 }
 
-/******Blocks******/
-#blocks {
+.blockList:hover {
+  -webkit-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 1);
+  -moz-box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 1);
+  box-shadow: 0px 7px 12px -1px rgba(207, 207, 207, 1);
 }
 
 .blockCard {
   display: inline-block;
-  width: 11vw;
-  height: 22vh;
-  margin: 4%;
-  border: 1px solid grey;
+  width: 100%;
+  height: 100%;
+  padding: 3%;
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.blockCard i {
+  position: relative;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 1.3vw;
+  color: #ba1f31;
+}
+
+.numberOfStudents {
+  width: 100%;
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 2% auto;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Students {
+  display: inline-block;
+  font-size: 1em;
+  margin-top: 0;
+  text-align: center;
+}
+
+.blockCard h4 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-top: 0px;
+}
+
+/******Toggle******/
+#toggle {
+  float: right;
+}
+
+.allStudents {
 }

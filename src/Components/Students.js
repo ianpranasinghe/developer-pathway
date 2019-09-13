@@ -8,31 +8,60 @@ class Students extends React.Component {
     students: this.props.students
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.students !== this.props.students ||
+      prevProps.updated !== this.props.updated
+    ) {
+      this.setState(currentState => {
+        const newState = {
+          ...currentState,
+          filter: prevProps.filter,
+          students: this.props.students
+        };
+        return newState;
+      });
+    }
+  }
+
+  resetStudents = () => {
+    this.props.resetState();
+  };
+
   render() {
     if (this.state.students.length > 0) {
       const { students } = this.state;
       return (
         <div className="Students" id="studentsBlock">
+          <h3>Students</h3>
+          <p>114 Results</p>
           <Router>
-            <Student path="students/:id" />
+            <Student path=":id" resetStudents={this.resetStudents} />
           </Router>
           <ul>
             {students.map(student => {
               const { name, _id, startingCohort, currentBlock } = student;
               return (
                 <>
-                  <div class="studentCard" key={_id}>
-                    <Link to={`students/${_id}`} id="studentCardName">
-                      {name}{" "}
-                    </Link>
-                    <div id="studentCardCurrentBlock">
-                      {" "}
-                      Current block: {currentBlock.toUpperCase()}
+                  <Link to={`/students/${_id}`} id="studentCardName">
+                    <div class="studentCardContainer" key={_id}>
+                      <div class="studentCardInner">
+                        <img src="/man.svg" alt="profilePic"></img>
+                        {name}{" "}
+                        <div id="studentCardCurrentBlock">
+                          {" "}
+                          Current block: {currentBlock.toUpperCase()}
+                        </div>
+                        <div id="studentCardStartingCohort">
+                          Starting cohort: {startingCohort}
+                        </div>
+                      </div>
                     </div>
-                    <div id="studentCardStartingCohort">
-                      Starting cohort: {startingCohort}
-                    </div>
-                  </div>
+                  </Link>
                 </>
               );
             })}

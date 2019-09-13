@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as urlRequest from "./urlRequest";
+import { Link } from "@reach/router";
 
 class Student extends Component {
   state = {
@@ -7,10 +8,12 @@ class Student extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getStudent();
   }
 
   componentDidUpdate(prevProps) {
+    window.scrollTo(0, 0);
     if (prevProps !== this.props) {
       this.getStudent();
     }
@@ -25,6 +28,17 @@ class Student extends Component {
           const newState = { ...currentState, student };
           return newState;
         });
+      });
+  };
+
+  patchStudent = () => {
+    const { id } = this.props;
+    return urlRequest
+      .patchData(
+        `https://nc-student-tracker.herokuapp.com/api/students/${id}?progress=true`
+      )
+      .then(({ student }) => {
+        this.props.resetStudents();
       });
   };
 
@@ -45,6 +59,11 @@ class Student extends Component {
       }, []);
       return (
         <div id="student">
+          <Link to="../">Close</Link>
+          <Link to="../">
+            {" "}
+            <button onClick={this.patchStudent}>Graduate From Block</button>
+          </Link>
           <h1 id="name">{student.name}</h1>
           <p>Student ID: {student._id}</p>
           <p>Starting cohort: {student.startingCohort}</p>
@@ -55,7 +74,9 @@ class Student extends Component {
                 <h3>{name}</h3>
                 <ul className="blocksList">
                   <li key={_id}>Block ID: {_id}</li>
-                  <li key={numOfAttempts}>Number of attempts: {numOfAttempts}</li>
+                  <li key={numOfAttempts}>
+                    Number of attempts: {numOfAttempts}
+                  </li>
                 </ul>
               </div>
             );
