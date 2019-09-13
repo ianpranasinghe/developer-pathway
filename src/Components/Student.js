@@ -43,6 +43,7 @@ class Student extends Component {
   };
 
   render() {
+    console.log("in student file");
     const { student } = this.state;
     if (Object.keys(student).length > 0) {
       const newArr = student.blockHistory.reduce((newArray, block) => {

@@ -149,6 +149,16 @@ class Blocks extends Component {
             <h4 name="grad"> Graduates</h4>
           </button>
         </Link>
+        <Link to="blocks/grad">
+          <button
+            onClick={this.props.filterState}
+            class="blockCard"
+            key="grad"
+            id="grad"
+          >
+            Graduates
+          </button>
+        </Link>
       </div>
     );
   }
