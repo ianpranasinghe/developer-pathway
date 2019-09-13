@@ -1,38 +1,35 @@
 import React from "react";
 import { Link, Router } from "@reach/router";
-
 import Student from "./Student";
+import * as urlRequest from "./urlRequest";
 
-class Students extends React.Component {
+class DisplayStudents extends React.Component {
   state = {
-    students: this.props.students
+    students: []
   };
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.students !== this.props.students ||
-      prevProps.updated !== this.props.updated
-    ) {
+  fetchData = () => {
+    const { slug } = this.props;
+    const endpoint = slug ? `blocks/${slug}/students` : "students";
+    urlRequest.getData(endpoint).then(data => {
       this.setState(currentState => {
         const newState = {
           ...currentState,
-          filter: prevProps.filter,
-          students: this.props.students
+          students: data.students
         };
+
         return newState;
       });
-    }
+    });
+  };
+  ///check if slug has changed with cimpinent did update if the slug has changed - have a look at configuring axios to have a base URL
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    this.fetchData();
   }
 
-  resetStudents = () => {
-    this.props.resetState();
-  };
-
   render() {
+    console.log(this.props);
     if (this.state.students.length > 0) {
       const { students } = this.state;
       return (
@@ -78,4 +75,4 @@ class Students extends React.Component {
   }
 }
 
-export default Students;
+export default DisplayStudents;

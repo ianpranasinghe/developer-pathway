@@ -7,13 +7,13 @@ import Navigation from "./Components/Navigation";
 
 class App extends React.Component {
   state = {
-    newStudent: ""
+    newStudent: "",
+    bool: false
   };
 
   setTheState = newStudent => {
-    this.setState(currentState => {
-      const newState = { ...currentState, newStudent };
-      return newState;
+    this.setState({ newStudent }, () => {
+      this.setState({ bool: true });
     });
   };
 

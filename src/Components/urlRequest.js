@@ -1,19 +1,21 @@
 import axios from "axios";
 
+const baseURL = "https://nc-student-tracker.herokuapp.com/api/";
+
 export const getData = url => {
-  return axios.get(url).then(({ data }) => {
+  return axios.get(`${baseURL}${url}`).then(({ data }) => {
     return data;
   });
 };
 
 export const patchData = url => {
-  return axios.patch(url).then(({ data }) => {
+  return axios.patch(`${baseURL}${url}`).then(({ data }) => {
     return data;
   });
 };
 
 export const postData = (url, newstudent) => {
-  return axios.post(url, newstudent).then(({ data }) => {
+  return axios.post(`${baseURL}${url}`, newstudent).then(({ data }) => {
     return data;
   });
 };

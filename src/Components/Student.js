@@ -38,7 +38,7 @@ class Student extends Component {
         `https://nc-student-tracker.herokuapp.com/api/students/${id}?progress=true`
       )
       .then(({ student }) => {
-        this.props.resetStudents();
+        console.log(student);
       });
   };
 

@@ -10,15 +10,10 @@ class Navigation extends React.Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    this.setState(
-      currentState => {
-        const newState = { ...currentState, [name]: value };
-        return newState;
-      },
-      () => {
-        console.log(this.state, "<----- this state");
-      }
-    );
+    this.setState(currentState => {
+      const newState = { ...currentState, [name]: value };
+      return newState;
+    });
   };
 
   handleSubmit = event => {
@@ -29,9 +24,9 @@ class Navigation extends React.Component {
         this.state
       )
       .then(({ student }) => {
-        this.props.setTheState(student);
         this.setState(currentState => {
           const newState = { ...currentState, name: "", startingCohort: "" };
+          this.props.setTheState(student);
           return newState;
         });
       });
