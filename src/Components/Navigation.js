@@ -20,7 +20,7 @@ class Navigation extends React.Component {
     event.preventDefault();
     urlRequest
       .postData(
-        "https://nc-student-tracker.herokuapp.com/api/students",
+        "/students",
         this.state
       )
       .then(({ student }) => {
@@ -39,12 +39,12 @@ class Navigation extends React.Component {
           src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_logo.png"
           alt="NorthCoders"
         ></img>
-        <div class="navItem">
+        <div className="navItem">
           <Link to="/">
             <h3>Dashboard</h3>
           </Link>
         </div>
-        <div class="navItem">
+        <div className="navItem">
           <Link to="/course">
             <h3>Course</h3>
           </Link>

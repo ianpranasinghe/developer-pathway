@@ -19,3 +19,9 @@ export const postData = (url, newstudent) => {
     return data;
   });
 };
+
+export const deleteData = url => {
+  return axios.delete(`${baseURL}${url}`).then(({ data }) => {
+    return data;
+  });
+};

@@ -42,7 +42,10 @@ class Blocks extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.newStudent !== this.props.newStudent) {
+    if (
+      prevProps.newStudent !== this.props.newStudent ||
+      prevProps.addedStudent !== this.props.addedStudent
+    ) {
       window.scrollTo(0, 0);
       urlRequest.getData("students").then(data => {
         this.setState(currentState => {
@@ -62,101 +65,108 @@ class Blocks extends Component {
   render() {
     return (
       <div id="blocks">
-        <Link class="blockList" to="blocks/fun">
+        <Link className="blockList" to="../../blocks/fun">
           <button
             onClick={this.props.filterState}
-            class="blockCard"
+            className="blockCard"
             key="fun"
             name="fun"
           >
-            <i name="fun" class="fas fa-cubes"></i>
-            <p class="numberOfStudents" name="fun">
+            <i name="fun" className="fas fa-cubes"></i>
+            <p className="numberOfStudents" name="fun">
               {this.state.studentCount.fun}
             </p>
-            <p class="Students" name="fun">
+            <p className="Students" name="fun">
               Students
             </p>
             <h4 name="fun">Fundamentals</h4>
           </button>
         </Link>
 
-        <Link class="blockList" to="blocks/be">
+        <Link className="blockList" to="../../blocks/be">
           <button
-            class="blockCard"
+            className="blockCard"
             key="be"
             onClick={this.props.filterState}
             name="be"
           >
-            <i name="be" class="fas fa-database"></i>
-            <p name="be" class="numberOfStudents">
+            <i name="be" className="fas fa-database"></i>
+            <p name="be" className="numberOfStudents">
               {this.state.studentCount.be}
             </p>
-            <p name="be" class="Students">
+            <p name="be" className="Students">
               Students
             </p>
             <h4 name="be"> Back End</h4>
           </button>
         </Link>
 
-        <Link class="blockList" to="blocks/fe">
+        <Link className="blockList" to="../../blocks/fe">
           <button
             onClick={this.props.filterState}
-            class="blockCard"
+            className="blockCard"
             key="fe"
             name="fe"
           >
-            <i class="fas fa-desktop" name="fe"></i>
-            <p class="numberOfStudents" name="fe">
+            <i className="fas fa-desktop" name="fe"></i>
+            <p className="numberOfStudents" name="fe">
               {this.state.studentCount.fe}
             </p>
-            <p class="Students" name="fe">
+            <p className="Students" name="fe">
               Students
             </p>
             <h4 name="fe">Front End</h4>
           </button>
         </Link>
-        <Link class="blockList" to="blocks/proj">
+        <Link className="blockList" to="../../blocks/proj">
           <button
             onClick={this.props.filterState}
-            class="blockCard"
+            className="blockCard"
             key="proj"
             name="proj"
           >
-            <i class="fas fa-users" name="proj"></i>
-            <p class="numberOfStudents" name="proj">
+            <i className="fas fa-project-diagram" name="proj"></i>
+            <p className="numberOfStudents" name="proj">
               {this.state.studentCount.proj}
             </p>
-            <p class="Students" name="proj">
+            <p className="Students" name="proj">
               Students
             </p>
             <h4 name="proj">Projects</h4>
           </button>
         </Link>
-        <Link class="blockList" to="blocks/grad">
+        <Link className="blockList" to="../../blocks/grad">
           <button
             onClick={this.props.filterState}
-            class="blockCard"
+            className="blockCard"
             key="grad"
             name="grad"
           >
-            <i class="fas fa-graduation-cap" name="grad"></i>
-            <p class="numberOfStudents" name="grad">
+            <i className="fas fa-graduation-cap" name="grad"></i>
+            <p className="numberOfStudents" name="grad">
               {this.state.studentCount.grad}
             </p>
-            <p class="Students" name="grad">
+            <p className="Students" name="grad">
               Students
             </p>
             <h4 name="grad"> Graduates</h4>
           </button>
         </Link>
-        <Link to="blocks/grad">
+        <Link className="blockList" to="../../">
           <button
             onClick={this.props.filterState}
-            class="blockCard"
-            key="grad"
-            id="grad"
+            className="blockCard"
+            key="all"
+            name="all"
           >
-            Graduates
+            <i className="fas fa-users" name="proj"></i>
+            <p className="numberOfStudents" name="all">
+              {this.state.studentCount.all}
+            </p>
+            <p className="Students" name="all">
+              Students
+            </p>
+            <h4 name="grad"> All Students</h4>
           </button>
         </Link>
       </div>

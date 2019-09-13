@@ -2,10 +2,12 @@ import React from "react";
 import { Link, Router } from "@reach/router";
 import Student from "./Student";
 import * as urlRequest from "./urlRequest";
+import Blocks from "./Blocks";
 
 class DisplayStudents extends React.Component {
   state = {
-    students: []
+    students: [],
+    newStudent: {}
   };
 
   fetchData = () => {
@@ -22,31 +24,56 @@ class DisplayStudents extends React.Component {
       });
     });
   };
-  ///check if slug has changed with cimpinent did update if the slug has changed - have a look at configuring axios to have a base URL
+
+  studentUpdate = newStudent => {
+    this.setState({ newStudent });
+  };
+
   componentDidMount() {
     window.scrollTo(0, 0);
     this.fetchData();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    window.scrollTo(0, 0);
+    if (
+      prevProps.uri !== this.props.uri ||
+      prevProps.newStudent !== this.props.newStudent ||
+      prevState.newStudent !== this.state.newStudent
+    ) {
+      this.fetchData();
+    }
+  }
+
   render() {
-    console.log(this.props);
     if (this.state.students.length > 0) {
-      const { students } = this.state;
+      const { students, newStudent } = this.state;
+      const { slug } = this.props;
       return (
         <div className="Students" id="studentsBlock">
+          <Blocks
+            newStudent={newStudent}
+            addedStudent={this.props.newStudent}
+          />
           <h3>Students</h3>
-          <p>114 Results</p>
           <Router>
-            <Student path=":id" resetStudents={this.resetStudents} />
+            <Student path=":id" studentUpdate={this.studentUpdate} />
           </Router>
           <ul>
             {students.map(student => {
               const { name, _id, startingCohort, currentBlock } = student;
               return (
                 <>
-                  <Link to={`/students/${_id}`} id="studentCardName">
-                    <div class="studentCardContainer" key={_id}>
-                      <div class="studentCardInner">
+                  <Link
+                    to={
+                      slug
+                        ? `/students/blocks/${slug}/${_id}`
+                        : `/students/${_id}`
+                    }
+                    id="studentCardName"
+                  >
+                    <div className="studentCardContainer" key={_id}>
+                      <div className="studentCardInner">
                         <img src="/man.svg" alt="profilePic"></img>
                         {name}{" "}
                         <div id="studentCardCurrentBlock">

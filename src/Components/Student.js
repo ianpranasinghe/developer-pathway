@@ -12,38 +12,33 @@ class Student extends Component {
     this.getStudent();
   }
 
-  componentDidUpdate(prevProps) {
-    window.scrollTo(0, 0);
-    if (prevProps !== this.props) {
-      this.getStudent();
-    }
-  }
-
   getStudent = () => {
     const { id } = this.props;
-    return urlRequest
-      .getData(`https://nc-student-tracker.herokuapp.com/api/students/${id}`)
-      .then(({ student }) => {
-        this.setState(currentState => {
-          const newState = { ...currentState, student };
-          return newState;
-        });
+    return urlRequest.getData(`students/${id}`).then(({ student }) => {
+      this.setState(currentState => {
+        const newState = { ...currentState, student };
+        return newState;
       });
+    });
   };
 
   patchStudent = () => {
-    const { id } = this.props;
+    const { id, studentUpdate } = this.props;
     return urlRequest
-      .patchData(
-        `https://nc-student-tracker.herokuapp.com/api/students/${id}?progress=true`
-      )
+      .patchData(`students/${id}?progress=true`)
       .then(({ student }) => {
-        console.log(student);
+        studentUpdate(student);
       });
   };
 
+  deleteStudent = () => {
+    const { id, studentUpdate } = this.props;
+    return urlRequest.deleteData(`students/${id}`).then(({ student }) => {
+      studentUpdate(id);
+    });
+  };
+
   render() {
-    console.log("in student file");
     const { student } = this.state;
     if (Object.keys(student).length > 0) {
       const newArr = student.blockHistory.reduce((newArray, block) => {
@@ -64,6 +59,7 @@ class Student extends Component {
           <Link to="../">
             {" "}
             <button onClick={this.patchStudent}>Graduate From Block</button>
+            <button onClick={this.deleteStudent}>Delete Student</button>
           </Link>
           <h1 id="name">{student.name}</h1>
           <p>Student ID: {student._id}</p>
